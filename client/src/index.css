@@ -1,0 +1,86 @@
+ body, html{ 
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.bg  {
+  background-image: url("./templates/background/buisnessman.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 25%; 
+}
+
+.content  {
+  position: center;
+  bottom: 0;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.3);
+  color: #f1f1f1;
+  height: 100%;
+  width: 100%;
+  padding: 40px;
+}
+
+.logo {
+	margin-bottom: 15px;
+	font-size: 59px;
+	font-weight: 400;
+	color: #F0EDE5;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 7px;
+	transition: all 1s;
+}
+
+.footer
+{
+	margin-top: 20px;
+	text-align: center;
+	color: #F0EDE5;
+	background-color: #000;
+  padding: 10px;
+}
+
+.row {
+	margin: 0 !important;
+}
+
+.tablesHeading
+{
+	background-color: #dddfd4;
+	text-transform: uppercase;
+	text-align: center;
+	border-radius: 5px;
+	font-size: 18px;
+	margin: 10px 0 10px 0;
+	padding: 5px;
+}
+
+@media only screen and (min-width: 240px) and (max-width: 360px) {	
+	.logo
+	{
+		margin-bottom: 15px;
+		font-size: 20px;
+		font-weight: 400;
+		color: #F0EDE5;
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 7px;
+		transition: all 1s;
+  }
+
+  .info
+	{
+		font-size: 12px;
+		transition: all 1s;
+	}
+
+}
