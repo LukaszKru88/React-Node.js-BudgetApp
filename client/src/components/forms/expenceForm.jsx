@@ -1,9 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import Form from './common/form';
+import Form from './formsComponents/form';
 import Joi from 'joi-browser';
-import Input from './common/input';
-import Select from './common/select';
+import Input from './formsComponents/input';
+import Select from './formsComponents/select';
 import { generateDate } from '../utils/date';
 
 class ExpenceForm extends Form {

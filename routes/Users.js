@@ -49,9 +49,9 @@ users.post('/login', async (req, res) => {
                 email: req.body.email
             }
         });
-
+        const { id, email, username } = user.dataValues;
         if(user && await bcrypt.compare(req.body.password, user.password)){
-            let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
+            let token = jwt.sign({ id, email, username }, process.env.SECRET_KEY, {
                 expiresIn: 1440
             });
             res.send(token);

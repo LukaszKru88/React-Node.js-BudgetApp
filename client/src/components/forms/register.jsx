@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import Form from './common/form';
+import Form from './formsComponents/form';
 import Joi from 'joi-browser';
-import Input from './common/input';
+import Input from './formsComponents/input';
 import { register } from '../utils/UserFunctions';
 
 class Register extends Form {

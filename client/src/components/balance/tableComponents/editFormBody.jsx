@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Input from '../../forms/common/input';
-import Select from '../../forms/common/select';
+import Input from '../../forms/formsComponents/input';
+import Select from '../../forms/formsComponents/select';
 import { Button, Form, ModalFooter } from 'reactstrap';
 
 class EditFormBody extends Component {

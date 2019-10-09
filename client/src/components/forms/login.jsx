@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import Form from './common/form';
+import Form from './formsComponents/form';
 import Joi from 'joi-browser';
-import Input from './common/input';
+import Input from './formsComponents/input';
 import {login} from '../utils/UserFunctions';
 
 class Login extends Form {
@@ -20,16 +20,17 @@ class Login extends Form {
     }
 
     doSubmit = async() => {
-            const callback = await login(this.state.data);
-            if(callback.data.error){
-                const errors = {...this.state.errors};
-                errors.serverError = callback.data.error;
-                this.setState({errors});
-            }
-            else {
-                this.props.login();
-                this.props.history.push('/balanceViewer');
-            }
+        const callback = await login(this.state.data);
+
+        if(callback.data.error){
+            const errors = {...this.state.errors};
+            errors.serverError = callback.data.error;
+            this.setState({errors});
+        }
+        else {
+            //this.props.login();
+            window.location = '/balanceViewer';
+        }
     }
 
     render() {

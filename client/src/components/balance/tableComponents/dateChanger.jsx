@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, Form, ModalFooter } from 'reactstrap';
 import Joi from 'joi-browser';
-import Input from '../../forms/common/input';
+import Input from '../../forms/formsComponents/input';
 import { getDate } from '../../utils/date';
 
 class dateChanger extends Component {

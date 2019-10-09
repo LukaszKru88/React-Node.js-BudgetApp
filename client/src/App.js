@@ -36,20 +36,15 @@ class App extends Component {
     }
   }
   
-  componentDidMount(){
-    if(localStorage.id && localStorage.username && localStorage.email){
-      const {id, username, email} = localStorage;
-      const user = {id, username, email};
-      this.setState({user});
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState){
-    if(prevState.user !== this.state.user) {
+  async componentDidMount(){
+    try {
+      const jwt = localStorage.getItem('userToken');
+      const user = jwt_decode(jwt);
+      await this.setState({user}); 
       localStorage.setItem('dateRange', ""); 
       const{ startDate, endDate } = getDate();
       this.getData( startDate, endDate );
-    }
+    } catch (error) {}
   }
 
   login = async () => {
@@ -146,7 +141,7 @@ class App extends Component {
       categories[categoriesType][id] = { id: categoryId[0].id, name: newCategory };
     }
     else if (formType === 'delete') {
-      // categories[categoriesType] = categories[categoriesType].filter(category => category.name !== oldCategory);
+      //categories[categoriesType] = categories[categoriesType].filter(category => category.name !== oldCategory);
       this.handleDelete(settings)
     }
     this.setState({ [subState]: categories });
@@ -176,7 +171,6 @@ class App extends Component {
   }
 
   render() {
-    //console.log(this.state.incomes.incomeCategories);
     const { incomes, expences, user } = this.state;
     return (
       <React.Fragment>
@@ -184,10 +178,7 @@ class App extends Component {
         <NavBar user={user}/>
         <div className="container">
           <Switch>
-            <Route path="/login" 
-              render={() => <Login 
-              login={this.login}/>}
-            />
+            <Route path="/login" component={Login}/>
             <Route path="/register" component={Register}/>
             <PrivateRoute path="/addIncome" render={() => <IncomeForm
                 addIncome={this.handleAddIncome}
