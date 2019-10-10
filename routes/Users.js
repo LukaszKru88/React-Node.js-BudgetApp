@@ -1,3 +1,4 @@
+const config = require('config');
 const express = require('express');
 const users = express.Router();
 const cors = require('cors');
@@ -7,8 +8,6 @@ const {copyDefaultCategoriesTable} = require('../queries/registrationMethods');
 const {paymentMethods, expenceCategories, incomeCategories} = require('../queries/registrationQueries');
 const User = require('../models/User');
 users.use(cors());
-
-process.env.SECRET_KEY = "secret";
 
 users.post('/register', async (req, res) => {
     const userData = {
@@ -51,9 +50,7 @@ users.post('/login', async (req, res) => {
         });
         const { id, email, username } = user.dataValues;
         if(user && await bcrypt.compare(req.body.password, user.password)){
-            let token = jwt.sign({ id, email, username }, process.env.SECRET_KEY, {
-                expiresIn: 1440
-            });
+            let token = jwt.sign({ id, email, username }, process.env.SECRET_KEY);
             res.send(token);
         } else {
             throw new Error("Incorrect email or password");

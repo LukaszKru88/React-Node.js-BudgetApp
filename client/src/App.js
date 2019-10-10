@@ -16,7 +16,6 @@ import { addIncome } from './components/utils/IncomeFunctions';
 import { addExpence } from './components/utils/ExpenceFunctions';
 import { addCategory, editCategory } from './components/utils/SettingFunctions';
 import { getDate } from './components/utils/date';
-import { throws } from 'assert';
 
 class App extends Component {
   state = {
@@ -45,19 +44,6 @@ class App extends Component {
       const{ startDate, endDate } = getDate();
       this.getData( startDate, endDate );
     } catch (error) {}
-  }
-
-  login = async () => {
-    const token = localStorage.userToken;
-    const {id, username, email} = jwt_decode(token);
-    localStorage.setItem('id', id);
-    localStorage.setItem('username', username);
-    localStorage.setItem('email', email);
-    const user = {...this.state.user};
-    user.id = id;
-    user.username = username;
-    user.email = email;
-    this.setState({user});
   }
 
   getData = async(startDate, endDate) => {
@@ -106,8 +92,7 @@ class App extends Component {
     dataState.data[index] = newState;
     this.setState({ [formType]: dataState });
 
-    const response = await editBalance(this.state.user, newState);
-    console.log(response);
+    await editBalance(this.state.user, newState);
   }
 
   handleBalanceDelete = async (data, type) => {
@@ -116,8 +101,7 @@ class App extends Component {
     dataForFiltration.data = filteredData;
     this.setState({ [type]: dataForFiltration });
 
-    const response = await deleteBalance(data, type);
-    console.log(response);
+    await deleteBalance(data, type);
   }
 
   handleSettingsChange = async (settings) => {
